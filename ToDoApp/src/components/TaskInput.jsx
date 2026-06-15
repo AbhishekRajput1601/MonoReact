@@ -5,60 +5,43 @@ export default function TaskInput({
   priority,
   setPriority,
   dueDate,
-  setDueDate, 
+  setDueDate,
   addTask,
 }) {
   return (
     <div className="bg-[#2b228e] text-white pb-8 pt-6">
       <div className="max-w-6xl mx-auto px-6">
-        <p className="text-indigo-200 text-sm">
-          What do you need to get done?
-        </p>
+        <p className="text-indigo-200 text-sm">What do you need to get done?</p>
 
-        <h2 className="text-4xl font-bold mt-1">
-          My Tasks
-        </h2>
+        <h2 className="text-4xl font-bold mt-1">My Tasks</h2>
 
         <div className="flex flex-col md:flex-row gap-3 mt-6">
           <input
             ref={inputRef}
             value={inputValue}
-            onChange={(e) =>
-              setInputValue(e.target.value)
-            }
-            onKeyDown={(e) =>
-              e.key === "Enter" && addTask()
-            }
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && addTask()}
             placeholder="Add a new task..."
             className="flex-1 h-12 rounded-lg bg-white text-black px-4 outline-none"
           />
 
           <select
             value={priority}
-            onChange={(e) =>
-              setPriority(e.target.value)
-            }
+            onChange={(e) => setPriority(e.target.value)}
             className="h-12 px-3 rounded-lg text-black bg-white"
           >
-            <option value="high">
-              High Priority
-            </option>
+            <option value="high">High Priority</option>
 
-            <option value="medium">
-              Medium Priority
-            </option>
+            <option value="medium">Medium Priority</option>
 
-            <option value="low">
-              Low Priority
-            </option>
+            <option value="low">Low Priority</option>
           </select>
 
           <input
             type="date"
             value={dueDate}
-            onChange={(e) =>
-              setDueDate(e.target.value)
-            }
+            min={new Date().toISOString().split("T")[0]}
+            onChange={(e) => setDueDate(e.target.value)}
             className="h-12 px-3 rounded-lg text-black bg-white"
           />
 
@@ -71,8 +54,7 @@ export default function TaskInput({
         </div>
 
         <p className="text-xs text-indigo-200 mt-2">
-          Input automatically focuses after
-          every task is added.
+          Input automatically focuses after every task is added.
         </p>
       </div>
     </div>
